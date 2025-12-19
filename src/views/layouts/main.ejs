@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Event Manager</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Event Manager</h1>
+    <nav>
+      <a href="/events">Wydarzenia</a>
+      <a href="/events/new">Dodaj wydarzenie</a>
+      <% if (!user) { %>
+        <a href="/login">Zaloguj</a>
+        <a href="/register">Zarejestruj</a>
+      <% } else { %>
+        <span>Witaj, <%= user.username %></span>
+        <a href="/logout">Wyloguj</a>
+      <% } %>
+    </nav>
+  </header>
+  <main>
+    <%- body %>
+  </main>
+  <footer>
+    <small>Prosty projekt — uczniowski poziom</small>
+  </footer>
+</body>
+</html>

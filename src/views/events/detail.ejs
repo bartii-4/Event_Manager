@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+  <h2><%= event.title %></h2>
+  <p><strong>Kategoria:</strong> <%= event.category %></p>
+  <p><strong>Data:</strong> <%= new Date(event.date).toLocaleString() %></p>
+  <p><strong>Miejsce:</strong> <%= event.location %></p>
+  <p><%= event.description %></p>
+  <p>
+    <% if (userId && event.owner && event.owner.toString() === userId) { %>
+      <a href="/events/<%= event._id %>/edit">Edytuj</a>
+      <form method="post" action="/events/<%= event._id %>/delete" style="display:inline">
+        <button type="submit">Usuń</button>
+      </form>
+    <% } %>
+  </p>
+
+<%- include('../partials/footer') %>

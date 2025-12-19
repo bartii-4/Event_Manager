@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+  <h2>Rejestracja</h2>
+  <% if (errors && errors.length) { %>
+    <ul style="color:tomato">
+      <% errors.forEach(function(e){ %>
+        <li><%= e %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <form method="post" action="/register">
+    <label>Nazwa użytkownika <input name="username" required></label>
+    <label>Hasło <input name="password" type="password" required></label>
+    <label>Potwierdź hasło <input name="confirm" type="password" required></label>
+    <button type="submit">Zarejestruj</button>
+  </form>
+
+<%- include('../partials/footer') %>

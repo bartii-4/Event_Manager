@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+
+  <h2>Lista wydarzeń</h2>
+
+  <form method="get" action="/events">
+    <input name="q" placeholder="Szukaj po tytule" value="<%= q || '' %>">
+    <label>Sortuj po:
+      <select name="sort">
+        <option value="date" <%= sortField==='date' ? 'selected' : '' %>>Data</option>
+        <option value="title" <%= sortField==='title' ? 'selected' : '' %>>Tytuł</option>
+      </select>
+    </label>
+    <label>Order:
+      <select name="order">
+        <option value="desc" <%= order===-1 ? 'selected' : '' %>>Malejąco</option>
+        <option value="asc" <%= order===1 ? 'selected' : '' %>>Rosnąco</option>
+      </select>
+    </label>
+    <button type="submit">Filtruj</button>
+  </form>
+
+  <% if (!events || events.length === 0) { %>
+    <p>Brak wydarzeń.</p>
+  <% } else { %>
+    <ul>
+      <% events.forEach(function(ev){ %>
+        <li>
+          <a href="/events/<%= ev._id %>"><strong><%= ev.title %></strong></a>
+          — <%= ev.category %> — <%= new Date(ev.date).toLocaleString() %>
+          <% if (userId && ev.owner && ev.owner.toString() === userId) { %>
+            <form method="post" action="/events/<%= ev._id %>/delete" style="display:inline">
+              <button type="submit">Usuń</button>
+            </form>
+            <a href="/events/<%= ev._id %>/edit">Edytuj</a>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+<%- include('../partials/footer') %>

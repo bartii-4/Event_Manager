@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+  <h2><%= event && event._id ? 'Edytuj wydarzenie' : 'Dodaj wydarzenie' %></h2>
+
+  <% if (errors && errors.length) { %>
+    <ul style="color:tomato">
+      <% errors.forEach(function(e){ %>
+        <li><%= e %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form method="post" action="<%= formAction %>">
+    <label>Tytuł <input name="title" value="<%= event.title || '' %>" required></label>
+    <label>Opis <textarea name="description"><%= event.description || '' %></textarea></label>
+    <label>Data <input name="date" type="datetime-local" value="<%= event.date ? new Date(event.date).toISOString().slice(0,16) : '' %>"></label>
+    <label>Miejsce <input name="location" value="<%= event.location || '' %>"></label>
+    <label>Kategoria <input name="category" value="<%= event.category || 'general' %>"></label>
+    <button type="submit">Zapisz</button>
+  </form>
+
+<%- include('../partials/footer') %>

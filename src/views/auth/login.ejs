@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+  <h2>Logowanie</h2>
+  <% if (errors && errors.length) { %>
+    <ul style="color:tomato">
+      <% errors.forEach(function(e){ %>
+        <li><%= e %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <form method="post" action="/login">
+    <label>Nazwa użytkownika <input name="username" required></label>
+    <label>Hasło <input name="password" type="password" required></label>
+    <button type="submit">Zaloguj</button>
+  </form>
+
+<%- include('../partials/footer') %>

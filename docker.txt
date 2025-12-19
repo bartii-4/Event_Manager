@@ -1,0 +1,24 @@
+1) Uruchom kontener MongoDB lokalnie:
+
+-powershell
+docker run -d --name event-manager-mongo -p 27017:27017 -v mongo-data:/data/db mongo:6
+
+
+To uruchomi MongoDB na porcie `27017`. Dane będą przechowywane w wolumenie `mongo-data`.
+Uwaga: to uruchomienie nie ma uwierzytelniania — odpowiednie tylko do lokalnych testów.
+
+2) (opcjonalnie) Ustaw zmienne środowiskowe (przydatne gdy chcesz zmienić URI lub nazwę DB):
+
+W PowerShell (ustaw trwałe zmienne):
+-powershell
+setx MONGO_URI "mongodb://localhost:27017"
+setx DB_NAME "event_manager_db"
+
+
+Po ustawieniu zmiennych otwórz nowy PowerShell, aby były widoczne w sesji, a następnie uruchom aplikację:
+-powershell
+npm install
+npm start
+
+
+

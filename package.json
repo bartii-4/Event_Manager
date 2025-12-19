@@ -1,0 +1,25 @@
+{
+  "name": "event-manager",
+  "version": "1.0.0",
+  "description": "Prosty projekt: Platforma wydarzeń / meetupów (dla początkującego)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "keywords": [
+    "events",
+    "meetup",
+    "express",
+    "ejs",
+    "mongodb"
+  ],
+  "author": "Student",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.17.3",
+    "mongodb": "^7.0.0"
+  }
+}
